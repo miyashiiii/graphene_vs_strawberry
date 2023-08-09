@@ -3,7 +3,7 @@ import strawberry
 import strawberry_django
 from ingredients import models
 from strawberry.types import Info
-
+import strawberry.django
 
 @strawberry_django.type(models.Category)
 class Category:
@@ -22,7 +22,7 @@ class Ingredient:
 
 @strawberry.type
 class Query:
-    all_fruits: list[Category] = strawberry.django.field()
+    all_categories: list[Category] = strawberry.django.field()
 
     @strawberry_django.field
     def category_by_name(self, info, name: str) -> Category:
